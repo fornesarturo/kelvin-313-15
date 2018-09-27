@@ -1,9 +1,9 @@
 <template>
     <div id="login">
         <div>
-            
+            <img id="logo" src="../../assets/logo.svg" width="90" height="90" class="d-inline-block align-top" alt="">
         </div>
-        <form @submit.prevent ="login">
+        <form @submit.prevent="login">
             <p class="h4 text-center mb-4">Sign in</p>
             <label for="defaultFormLoginEmailEx" class="grey-text">Your email</label>
             <input v-model="input.username" type="email" id="defaultFormLoginEmailEx" class="form-control"/>
@@ -13,7 +13,6 @@
             <div class="text-center mt-4">
                 <button @click="login()" class="btn btn-indigo" type="submit">Login</button>
             </div>
-            
         </form>
 <!-- Default form login -->
     </div>
@@ -29,6 +28,9 @@
                     password: ""
                 }
             }
+        },
+        created() {
+             this.$store.commit("setNavBarDisplay", false) 
         },
         methods: {
             login() {
@@ -48,7 +50,10 @@
         border: 2px solid #CCCCCC;
         background-color: #FFFFFF;
         margin: auto;
-        margin-top: 200px;
+        margin-top: 20px;
         padding: 20px;
+    }
+    #logo {
+        margin-bottom: 15px;
     }
 </style>

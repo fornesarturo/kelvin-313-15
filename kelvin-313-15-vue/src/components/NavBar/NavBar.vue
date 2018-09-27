@@ -20,7 +20,7 @@
       <ul class="navbar-nav">
         <nav-bar-link @click-link="clickedLink" to="/public" label="Público"/>
         <nav-bar-link @click-link="clickedLink" to="/clubs" label="Clubes"/>
-        <nav-bar-link @click="signOut()" to="/" label="Sign Out"/>
+        <nav-bar-link @click-link="logOut()" to="/" label="Sign Out"/>
       </ul>
     </div>
 
@@ -49,7 +49,7 @@ export default {
         console.log("Here!")
         this.collapse = false
     },
-    signOut() {
+    logOut() {
       this.$store.commit("setNavBarDisplay", false)
       this.$router.replace({name:"Login"})
     }
