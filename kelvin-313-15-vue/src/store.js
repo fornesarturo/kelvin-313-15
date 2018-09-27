@@ -22,7 +22,7 @@ export default new Vuex.Store({
     getters: {
 
     },
-    plugins: {
+    plugins: [
         vuexLocalStorage
-    }
+    ]
 })
