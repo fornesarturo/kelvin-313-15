@@ -11,16 +11,25 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-
+        navBarDisplay: false,
+        email: ''
     },
     actions: {
 
     },
     mutations: {
-
+        setNavBarDisplay (state, display) {
+            state.navBarDisplay = display
+        },
+        setEmail(state, email) {
+            state.email = email
+        }
     },
     getters: {
-
+        getEmail(state) {
+            return state.email
+        }
+        
     },
     plugins: [
         vuexLocalStorage

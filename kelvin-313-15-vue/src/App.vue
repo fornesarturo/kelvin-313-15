@@ -8,11 +8,12 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import NavBar from './components/NavBar/NavBar.vue'
+import Login from './components/Login/Login.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld, NavBar
+    HelloWorld, NavBar, Login
   }
 }
 </script>
