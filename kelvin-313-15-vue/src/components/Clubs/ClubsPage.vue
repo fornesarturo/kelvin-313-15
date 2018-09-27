@@ -1,5 +1,5 @@
 <template>
-  <div class="container club-container">
+  <div class="container">
     <div class="row justify-content-md-center">
       <div class="col-sm-6 col-xs-6 col-lg-6">
         <button @click="createClub" type="button" class="btn btn-outline-secondary btn-lg btn-create-event">Crear Club de Lectura</button>
@@ -26,18 +26,12 @@ export default {
   },
   data() {
     return {
-      clubs: [
-        { title: "Hola", description: "Description", image: "https://via.placeholder.com/350x150" },
-        { title: "Hola1", description: "Description", image: "https://via.placeholder.com/350x150" },
-        { title: "Hola2", description: "Description", image: "https://via.placeholder.com/350x150" },
-        { title: "Hola3", description: "Description", image: "https://via.placeholder.com/350x150" },
-        { title: "Hola4", description: "Description", image: "https://via.placeholder.com/350x150" },
-        { title: "Hola5", description: "Description", image: "https://via.placeholder.com/350x150" },
-        { title: "Hola6", description: "Description", image: "https://via.placeholder.com/350x150" },
-        { title: "Hola7", description: "Description", image: "https://via.placeholder.com/350x150" },
-        { title: "Hola8", description: "Description", image: "https://via.placeholder.com/350x150" },
-        { title: "Hola9", description: "Description", image: "https://via.placeholder.com/350x150" }
-      ]
+
+    }
+  },
+  computed: {
+    clubs () {
+      return this.$store.getters.getClubs
     }
   },
   methods: {
@@ -51,10 +45,6 @@ export default {
 
 <style scoped>
 .club-card {
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-.club-container {
   margin-top: 25px;
   margin-bottom: 25px;
 }
