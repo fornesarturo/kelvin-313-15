@@ -8,7 +8,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import NavBar from './components/NavBar.vue'
+import NavBar from './components/NavBar/NavBar.vue'
 
 export default {
   name: 'app',
