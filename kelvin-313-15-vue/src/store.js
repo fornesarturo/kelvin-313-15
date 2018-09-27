@@ -22,13 +22,20 @@ export default new Vuex.Store({
             { id: "7", title: "Hola7", description: "Description", image: "https://via.placeholder.com/350x150", participants: [], currentBook: "Pride and Prejudice" },
             { id: "8", title: "Hola8", description: "Description", image: "https://via.placeholder.com/350x150", participants: [], currentBook: "Pride and Prejudice" },
             { id: "9", title: "Hola9", description: "Description", image: "https://via.placeholder.com/350x150", participants: [], currentBook: "Pride and Prejudice" }
-        ]
+        ],
+        navBarDisplay: false,
+        email: ''
     },
     actions: {
 
     },
     mutations: {
-
+        setNavBarDisplay (state, display) {
+            state.navBarDisplay = display
+        },
+        setEmail(state, email) {
+            state.email = email
+        }
     },
     getters: {
         getClubs (state) {
@@ -39,6 +46,9 @@ export default new Vuex.Store({
                 const club = state.clubs.filter(club => club.id == clubId)
                 return club.length > 0 ? club[0]: null
             }
+        },
+        getEmail(state) {
+            return state.email
         }
     },
     plugins: [
