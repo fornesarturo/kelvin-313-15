@@ -16,18 +16,27 @@
       </div>
     </div>
     <div class="row club-detail-content">
-      <club-nav @changed-section="changeSection"/>
-      
+      <div class="col-12">
+        <club-nav @changed-section="changeSection"/>
+        <div class="club-detail-section">
+          <club-info v-show="section=='info'" :title="currentBook"/>
+          <club-participants v-show="section=='participants'" :participants="participants"/>
+          <club-dialog v-show="section=='dialog'" :messagesId='id'/>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import ClubNav from './ClubNav.vue'
+import ClubInfo from './ClubInfo.vue'
+import ClubParticipants from './ClubParticipants.vue'
+import ClubDialog from './ClubDialog.vue'
 
 export default {
   components: {
-    ClubNav
+    ClubNav, ClubInfo, ClubParticipants, ClubDialog
   },
   data() {
     return {
@@ -36,6 +45,7 @@ export default {
       description: '',
       image: '',
       participants: [],
+      currentBook: '',
       section: 'info'
     }
   },
@@ -43,12 +53,17 @@ export default {
     this.id = this.$route.params.id
     
     const club = this.$store.getters.getClub(this.id)
+    // eslint-disable-next-line
+    console.log(club)
     if (club != null) {
+      this.participants = club.participants
       this.title = club.title
       this.description = club.description
       this.image = club.image
-      this.participants = club.participants
+      this.currentBook = club.currentBook
     }
+    // eslint-disable-next-line
+    console.log("Participants: ", this.participants)
   },
   methods: {
     changeSection (section) {
@@ -60,6 +75,9 @@ export default {
 
 <style scoped>
 .club-detail-content {
+  margin-top: 35px;
+}
+.club-detail-section {
   margin-top: 35px;
 }
 </style>

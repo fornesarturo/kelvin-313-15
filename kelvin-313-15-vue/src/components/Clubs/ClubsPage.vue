@@ -29,6 +29,9 @@ export default {
 
     }
   },
+  created () {
+    this.$store.dispatch('fetchClubs')
+  },
   computed: {
     clubs () {
       return this.$store.getters.getClubs

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-left">
     <h2>Leyendo: {{ title }}</h2>
   </div>
 </template>
