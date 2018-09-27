@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Home from './components/Home.vue'
 import NavBar from './components/NavBar/NavBar.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld, NavBar
+    Home, NavBar
   }
 }
 </script>
