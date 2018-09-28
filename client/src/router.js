@@ -5,6 +5,8 @@ import Home from './components/Home.vue'
 import ClubsPage from './components/Clubs/ClubsPage.vue'
 import ClubDetail from './components/Clubs/ClubDetail/ClubDetail.vue'
 import Login from './components/Login/Login.vue'
+import PublicPage from './components/Public/PublicPage.vue'
+import PublicDetail from './components/Public/PublicDetail/PublicDetail.vue'
 
 Vue.use(Router)
 
@@ -31,6 +33,16 @@ export default new Router({
             path: '/clubs/:id',
             name: 'club',
             component: ClubDetail
+        },
+        {
+            path: '/public',
+            name: 'public',
+            component: PublicPage
+        },
+        {
+            path: '/public/:id',
+            name: 'book',
+            component: PublicDetail
         }
     ]
 })
