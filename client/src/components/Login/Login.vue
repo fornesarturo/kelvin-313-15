@@ -30,7 +30,7 @@
             }
         },
         created() {
-             this.$store.commit("setNavBarDisplay", false) 
+          this.$store.commit("setNavBarDisplay", false) 
         },
         methods: {
             login() {

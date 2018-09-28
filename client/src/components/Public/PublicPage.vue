@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     books () {
-      return this.$store.getters.getBooks
+      return this.$store.state.books
     }
   },
   methods: {
@@ -43,5 +43,4 @@ export default {
   margin-top: 25px;
   margin-bottom: 25px;
 }
-</style>
 </style>

@@ -7,35 +7,37 @@ import Vuex from 'vuex'
 //     key: 'kelvin-local-storage'
 // })
 
+import mockDB from './mockDB.js'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        books: [],
         messages: [],
         clubs: [],
-        navBarDisplay: false,
+        navBarDisplay: true,
         email: ''
     },
     actions: {
         fetchClubs (context, user) {
-            context.state.clubs = [
-                { id: "0", title: "Hola", description: "Description", image: "https://via.placeholder.com/350x150", participants: ["victor@gmail.com", "arturo@zubut.com"], currentBook: "Pride and Prejudice" },
-                { id: "1", title: "Hola1", description: "Description", image: "https://via.placeholder.com/350x150", participants: ["victor@gmail.com", "arturo@zubut.com"], currentBook: "Pride and Prejudice" },
-                { id: "2", title: "Hola2", description: "Description", image: "https://via.placeholder.com/350x150", participants: ["victor@gmail.com", "arturo@zubut.com"], currentBook: "Pride and Prejudice" },
-                { id: "3", title: "Hola3", description: "Description", image: "https://via.placeholder.com/350x150", participants: ["victor@gmail.com", "arturo@zubut.com"], currentBook: "Pride and Prejudice" },
-                { id: "4", title: "Hola4", description: "Description", image: "https://via.placeholder.com/350x150", participants: ["victor@gmail.com", "arturo@zubut.com"], currentBook: "Pride and Prejudice" },
-                { id: "5", title: "Hola5", description: "Description", image: "https://via.placeholder.com/350x150", participants: ["victor@gmail.com", "arturo@zubut.com"], currentBook: "Pride and Prejudice" },
-                { id: "6", title: "Hola6", description: "Description", image: "https://via.placeholder.com/350x150", participants: ["victor@gmail.com", "arturo@zubut.com"], currentBook: "Pride and Prejudice" },
-                { id: "7", title: "Hola7", description: "Description", image: "https://via.placeholder.com/350x150", participants: ["victor@gmail.com", "arturo@zubut.com"], currentBook: "Pride and Prejudice" },
-                { id: "8", title: "Hola8", description: "Description", image: "https://via.placeholder.com/350x150", participants: ["victor@gmail.com", "arturo@zubut.com"], currentBook: "Pride and Prejudice" },
-                { id: "9", title: "Hola9", description: "Description", image: "https://via.placeholder.com/350x150", participants: ["victor@gmail.com", "arturo@zubut.com"], currentBook: "Pride and Prejudice" }
-            ]
+            if (context.state.clubs.length == 0) {
+                context.state.clubs = mockDB.clubs
+            }
+        },
+        fetchBooks (context) {
+            if (context.state.books.length == 0) {
+                context.state.books = mockDB.books
+            }
         },
         fetchMessages (context, id) {
-            context.state.messages = [
-                { id: "0", author: "arturo@zubut.com", text: "Demasiado predecible" },
-                { id: "0", author: "victor@gmail.com", text: "Me hizo sentir cosas que no sabía que eran posibles sentir..." }
-            ]
+            if (context.state.messages.length == 0) {
+                context.state.messages = mockDB.messages
+                if (id != null)
+                    context.state.messages = mockDB.messages.filter(message => message.id == id)
+            } else if (id != null) {
+                context.state.messages = mockDB.messages.filter(message => message.id == id)
+            }
         }
     },
     mutations: {
@@ -44,6 +46,9 @@ export default new Vuex.Store({
         },
         setEmail(state, email) {
             state.email = email
+        },
+        addMessage(state, { id, text }) {
+            state.messages.push({ id: id, text: text, author: state.email })
         }
     },
     getters: {
@@ -54,6 +59,12 @@ export default new Vuex.Store({
             return clubId => {
                 const club = state.clubs.filter(club => club.id == clubId)
                 return club.length > 0 ? club[0]: null
+            }
+        },
+        getBook (state) {
+            return bookId => {
+                const book = state.books.filter(book => book.id == bookId)
+                return book.length > 0 ? book[0]: null
             }
         },
         getEmail(state) {

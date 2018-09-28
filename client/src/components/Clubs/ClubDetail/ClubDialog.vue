@@ -50,8 +50,9 @@ export default {
   },
   methods: {
     newMessage () {
-      // eslint-disable-next-line
-      console.log(`New message: ${this.currentMessage}`)
+      if (this.currentMessage === '') return
+      this.$store.commit('addMessage', {id: this.id, text: this.currentMessage})
+      this.currentMessage = ''
     }
   }
 }

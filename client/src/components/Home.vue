@@ -1,15 +1,15 @@
 <template>
   <div class="home">
     <br>
-     <div class="split left">
+     <div @click="enterSection('public')" class="split left">
       <div class="centered">
         <!--Icons made by Freepik "http://www.freepik.com" from www.flaticon.com  -->
         <img src="../assets/opened-book.svg" alt="opened-book">
-        <h2 onclick="location.href = '/public'" class="b-left" id="buttonPublic">Público</h2>
+        <h2 class="b-left" id="buttonPublic">Público</h2>
       </div>
     </div>
 
-    <div class="split right">
+    <div @click="enterSection('clubs')" class="split right">
       <div class="centered">
         <!--Icons made by Freepik "http://www.freepik.com" from www.flaticon.com  -->
          <img src="../assets/closed-book.svg" alt="closed-book">
@@ -29,6 +29,9 @@ export default {
   methods: {
     addQuote(){
       
+    },
+    enterSection (section) {
+      this.$router.push({path: `${section}`})
     }
   }
 }
