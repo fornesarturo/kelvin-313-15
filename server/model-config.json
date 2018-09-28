@@ -42,5 +42,13 @@
   "Club": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Message": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Reader": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

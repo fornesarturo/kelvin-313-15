@@ -1,29 +1,26 @@
 {
-  "name": "Club",
-  "plural": "Clubs",
+  "name": "Message",
+  "plural": "Messages",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "title": {
+    "text": {
       "type": "string",
       "required": true
-    },
-    "description": {
-      "type": "string"
-    },
-    "image": {
-      "type": "string"
     }
   },
   "validations": [],
   "relations": {
-    "readers": {
-      "type": "hasMany",
+    "reader": {
+      "type": "belongsTo",
       "model": "Reader",
-      "foreignKey": ""
+      "foreignKey": "readerId",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],
