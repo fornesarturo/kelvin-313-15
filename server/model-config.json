@@ -50,5 +50,9 @@
   "Reader": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Participant": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

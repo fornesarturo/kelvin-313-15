@@ -1,27 +1,19 @@
 {
-  "name": "Message",
-  "plural": "Messages",
+  "name": "Participant",
+  "plural": "Participants",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "text": {
-      "type": "string",
-      "required": true
-    },
-    "author": {
+    "readerId": {
       "type": "string",
       "required": true
     },
     "clubId": {
       "type": "string",
-      "required": false
-    },
-    "bookId": {
-      "type": "string",
-      "required": false
+      "required": true
     }
   },
   "validations": [],
